@@ -12,8 +12,8 @@ const main = create(
   '',
   [create('h1', 'title', 'Virtual Keyboard')],
 );
-const footer = create('footer', '', [create('h4', 'subtitle', 'WIndows virtual keyboard. Made under Windows'),
-create('p', 'hint', 'Use <kbd>Alt</kbd> + <kbd>Shift</kbd> to switch language.')])
+const footer = create('footer', '', [create('h4', 'subtitle', 'Virtual keyboard. Made under Windows.'),
+create('p', 'hint', 'Use <kbd>Alt</kbd> + <kbd>Shift</kbd> to switch language. Для смены языка используйте Alt+Shift.')])
 
 export default class Keyboard {
   constructor(rowsOrder) {
@@ -29,7 +29,7 @@ export default class Keyboard {
       'output',
       null,
       main,
-      ['placeholder', 'Type something here. Use your real keyboard or mouse-click'],
+      ['placeholder', 'Type something here. Use your real keyboard or mouse-click.'],
       ['rows', 8],
       ['cols', 50],
       ['spellcheck', false],

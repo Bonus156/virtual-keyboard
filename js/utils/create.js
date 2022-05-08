@@ -28,8 +28,8 @@ export default function create(el, classNames, child, parent, ...dataAttr) {
     parent.appendChild(element);
   }
   // dataAttr will be array of arrays: [['id', 'menu'], ['code', '']]
-  // <span id="" data-code="" disabled>
-  if (dataAttr.length) {
+  
+    if (dataAttr.length) {
     dataAttr.forEach(([attrName, attrValue]) => {
       if (attrValue === '') {
         element.setAttribute(attrName, '');
