@@ -118,14 +118,21 @@ export default class Keyboard {
       // switch lang
       if (code.match(/Alt/)) this.altKey = true;
       if (code.match(/Shift/)) this.shiftKey = true;
+      if (code.match(/Arrow/)) this.isArrow = true;
 
       if (code.match(/Alt/) && this.shiftKey) this.swithLanguage();
       if (code.match(/Shift/) && this.altKey) this.swithLanguage();
 
       if (!this.isCaps) {
-        this.printToOutput(keyObj, this.shiftKey ? keyObj.shift : keyObj.small);
-        } else if (this.isCaps) {
-          if (this.shiftKey) {
+        if (!this.isArrow) {
+          this.printToOutput(keyObj, this.shiftKey ? keyObj.shift : keyObj.small);
+        } else {
+          this.printToOutput(keyObj, keyObj.small);
+        }
+      } else if (this.isCaps) {
+          if (this.isArrow) {
+            this.printToOutput(keyObj, keyObj.small);
+          } else if (this.shiftKey) {
           this.printToOutput(keyObj, keyObj.sub.innerHTML ? keyObj.shift : keyObj.small);
         } else {
           this.printToOutput(keyObj, !keyObj.sub.innerHTML ? keyObj.shift : keyObj.small);
