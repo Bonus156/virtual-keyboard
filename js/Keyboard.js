@@ -7,13 +7,18 @@ import create from './utils/create.js';
 import language from './layouts/index.js';
 import Key from './Key.js';
 
+const MSG_EN = 'Use <kbd>Alt</kbd> + <kbd>Shift</kbd> to switch language.';
+const MSG_RU = 'Для смены языковой раскладки используйте Alt+Shift.';
+const MSGS = [MSG_RU, MSG_EN];
+
+
 const main = create(
   'main',
   '',
   [create('h1', 'title', 'Virtual Keyboard')],
 );
 const footer = create('footer', '', [create('h4', 'subtitle', 'Virtual keyboard. Made under Windows.'),
-create('p', 'hint', 'Use <kbd>Alt</kbd> + <kbd>Shift</kbd> to switch language. Для смены языка используйте Alt+Shift.')])
+create('p', 'hint', MSGS[1])]);
 
 export default class Keyboard {
   constructor(rowsOrder) {
@@ -146,6 +151,7 @@ export default class Keyboard {
     this.keyBase = langIndex + 1 < langAbbr.length ? language[langAbbr[langIndex += 1]] : language[langAbbr[langIndex -= langIndex]];
     this.container.dataset.language = langAbbr[langIndex];
     storage.set('kbLang', langAbbr[langIndex]);
+    footer.lastChild.innerHTML = MSGS[langIndex];
 
     this.keyButtons.forEach((button) => {
       const keyObj = this.keyBase.find((key) => key.code === button.code);
